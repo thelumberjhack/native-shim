@@ -13,7 +13,9 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -pie -fPIE
 LOCAL_LDFLAGS += -pie -fPIE -Wl,--export-dynamic
 
-APP_ABI := armeabi armeabi-v7a x86
+ifeq ($(NDK_DEBUG),1)
+  LOCAL_STRIP_MODE := none
+endif
 
 include $(BUILD_STATIC_EXECUTABLE)
 
